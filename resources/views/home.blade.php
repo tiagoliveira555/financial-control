@@ -8,91 +8,41 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-200">
-    <header class="bg-teal-600 text-white w-full h-40">
-        <h1 class="text-4xl text-center pt-5 font-bold">Controle Financeiro</h1>
-    </header>
+    <x-header>Controle Financeiro</x-header>
     <main class="max-w-6xl -mt-16 mx-auto">
         <div class="grid grid-cols-3 gap-x-4">
-            <div class="bg-white h-36 py-6 px-20 rounded shadow-sm shadow-gray-300 flex flex-col justify-between align-items-center">
-                <div class="flex justify-between align-items-center">
-                    <h2 class="text-xl opacity-80">Entradas</h2>
-                    <span>I</span>
-                </div>
-                <p class="text-4xl font-medium text-center">R$ <span>1500,00</span></p>
-            </div>
-            <div class="bg-white h-36 py-6 px-20 rounded shadow-sm shadow-gray-300 flex flex-col justify-between align-items-center">
-                <div class="flex justify-between align-items-center">
-                    <h2 class="text-xl opacity-80">Saídas</h2>
-                    <span>I</span>
-                </div>
-                <p class="text-4xl font-medium text-center">R$ <span>380,00</span></p>
-            </div>
-            <div class="bg-white h-36 py-6 px-20 rounded shadow-sm shadow-gray-300 flex flex-col justify-between align-items-center">
-                <div class="flex justify-between align-items-center">
-                    <h2 class="text-xl opacity-80">Total</h2>
-                    <span>I</span>
-                </div>
-                <p class="text-4xl font-medium text-center">R$ <span>1120,00</span></p>
-            </div>
+            <x-card-money label="Entradas" :icon="@svg('css-arrow-up-o')" money="1500,00" />
+            <x-card-money label="Saídas" :icon="@svg('css-arrow-down-o')" money="380,00" />
+            <x-card-money label="Total" :icon="@svg('css-dollar')" money="1120,00" />
         </div>
 
-        <form class="bg-white w-full h-28 mt-8 rounded shadow-sm shadow-gray-300 flex items-center justify-around">
-            <div class="flex flex-col">
-                <label class="text-gray-800" for="description">Descrição</label>
-                <input class="border" type="text" id="description" name="description">
+        <x-form>
+            <x-input label="Descrição" />
+            <x-input label="Valor" />
+            <div class="flex gap-10">
+                <x-radio-input label="Entrada" id="1" />
+                <x-radio-input label="Saída" id="0" />
             </div>
-            <div class="flex flex-col">
-                <label class="text-gray-800" for="value">Valor</label>
-                <input class="border" type="number" name="value" id="value">
-            </div>
-            <div>
-                <input class="cursor-pointer" type="radio" name="expense" id="1">
-                <label class="text-gray-800" for="1">Entrada</label>
-                <input class="cursor-pointer ml-8" type="radio" name="expense" id="0">
-                <label class="text-gray-800" for="0">Saída</label>
-            </div>
-            <button class="bg-teal-600 text-white uppercase p-3 rounded" type="submit">Adicionar</button>
-        </form>
+            <x-button>Adicionar</x-button>
+        </x-form>
         <table class="mt-8 bg-white w-full rounded shadow-sm shadow-gray-300">
             <thead class="border-b">
                 <tr>
                     <th class="text-left py-4 px-10 w-20">Descrição</th>
                     <th class="py-4 w-20">Valor</th>
                     <th class="py-4 w-20">Tipo</th>
-                    <th class="py-4 w-10"></th>
+                    <th class="py-4 w-2"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="px-10 py-2">Salário</td>
-                    <td class="text-center py-2">R$ 1.500,00</td>
-                    <td class="text-center py-2">I</td>
-                    <td class="text-center py-2">U</td>
-                </tr>
-                <tr>
-                    <td class="px-10 py-2">Salário</td>
-                    <td class="text-center py-2">R$ 1.500,00</td>
-                    <td class="text-center py-2">I</td>
-                    <td class="text-center py-2">U</td>
-                </tr>
-                <tr>
-                    <td class="px-10 py-2">Salário</td>
-                    <td class="text-center py-2">R$ 1.500,00</td>
-                    <td class="text-center py-2">I</td>
-                    <td class="text-center py-2">U</td>
-                </tr>
-                <tr>
-                    <td class="px-10 py-2">Salário</td>
-                    <td class="text-center py-2">R$ 1.500,00</td>
-                    <td class="text-center py-2">I</td>
-                    <td class="text-center py-2">U</td>
-                </tr>
-                <tr>
-                    <td class="px-10 py-2">Salário</td>
-                    <td class="text-center py-2">R$ 1.500,00</td>
-                    <td class="text-center py-2">I</td>
-                    <td class="text-center py-2">U</td>
-                </tr>
+                <x-tbody-items description="Salário" value="1500" :type="1"/>
+                <x-tbody-items description="Salário" value="1500" :type="0"/>
+                <x-tbody-items description="Salário" value="1500" :type="0"/>
+                <x-tbody-items description="Salário" value="1500" :type="1"/>
+                <x-tbody-items description="Salário" value="1500" :type="1"/>
+                <x-tbody-items description="Salário" value="1500" :type="0"/>
+                <x-tbody-items description="Salário" value="1500" :type="1"/>
+                <x-tbody-items description="Salário" value="1500" :type="1"/>
             </tbody>
         </table>
     </main>
