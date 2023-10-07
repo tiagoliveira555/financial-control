@@ -47,12 +47,54 @@
             </div>
             <div>
                 <input class="cursor-pointer" type="radio" name="expense" id="1">
-                <label for="1">Entrada</label>
+                <label class="text-gray-800" for="1">Entrada</label>
                 <input class="cursor-pointer ml-8" type="radio" name="expense" id="0">
-                <label for="0">Saída</label>
+                <label class="text-gray-800" for="0">Saída</label>
             </div>
             <button class="bg-teal-600 text-white uppercase p-3 rounded" type="submit">Adicionar</button>
         </form>
+        <table class="mt-8 bg-white w-full rounded shadow-sm shadow-gray-300">
+            <thead class="border-b">
+                <tr>
+                    <th class="text-left py-4 px-10 w-20">Descrição</th>
+                    <th class="py-4 w-20">Valor</th>
+                    <th class="py-4 w-20">Tipo</th>
+                    <th class="py-4 w-10"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="px-10 py-2">Salário</td>
+                    <td class="text-center py-2">R$ 1.500,00</td>
+                    <td class="text-center py-2">I</td>
+                    <td class="text-center py-2">U</td>
+                </tr>
+                <tr>
+                    <td class="px-10 py-2">Salário</td>
+                    <td class="text-center py-2">R$ 1.500,00</td>
+                    <td class="text-center py-2">I</td>
+                    <td class="text-center py-2">U</td>
+                </tr>
+                <tr>
+                    <td class="px-10 py-2">Salário</td>
+                    <td class="text-center py-2">R$ 1.500,00</td>
+                    <td class="text-center py-2">I</td>
+                    <td class="text-center py-2">U</td>
+                </tr>
+                <tr>
+                    <td class="px-10 py-2">Salário</td>
+                    <td class="text-center py-2">R$ 1.500,00</td>
+                    <td class="text-center py-2">I</td>
+                    <td class="text-center py-2">U</td>
+                </tr>
+                <tr>
+                    <td class="px-10 py-2">Salário</td>
+                    <td class="text-center py-2">R$ 1.500,00</td>
+                    <td class="text-center py-2">I</td>
+                    <td class="text-center py-2">U</td>
+                </tr>
+            </tbody>
+        </table>
     </main>
 </body>
 </html>
