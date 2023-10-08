@@ -1,6 +1,6 @@
-@props(['label', 'id'])
+@props(['label', 'value'])
 
 <div>
-    <input class="cursor-pointer" type="radio" name="expense" id="{{ $id }}">
-    <label class="text-gray-800" for="{{ $id }}">{{ $label }}</label>
+    <input wire:model="expense" class="cursor-pointer" type="radio" name="expense" id={{ $value }} value={{ $value }} />
+    <label class="text-gray-800" for="{{ $value }}">{{ $label }}</label>
 </div>

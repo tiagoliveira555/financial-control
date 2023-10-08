@@ -9,5 +9,5 @@
         <h2 class="text-x">{{ $label }}</h2>
         <span>{{ $icon }}</span>
     </div>
-    <p class="text-4xl font-medium text-center">R$ <span>{{ $money }}</span></p>
+    <p class="text-4xl font-medium text-center">R$ <span>{{ number_format($money, 2, ",", ".") }}</span></p>
 </div>
