@@ -24,7 +24,7 @@
         <table class="mt-8 bg-white w-full rounded shadow-sm shadow-gray-300">
             <x-theader />
             <tbody>
-                @foreach ($amounts as $item)
+                @foreach ($this->amounts as $item)
                     <x-tbody-items
                         wire:key="{{ $item['id'] }}"
                         description="{{ $item['description'] }}"

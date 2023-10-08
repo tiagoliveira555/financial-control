@@ -18,10 +18,12 @@ class Home extends Component
     #[Rule(['required', 'boolean'])]
     public bool $expense = false;
 
+    public array $amounts = [];
+
     public function render()
     {
         return view('livewire.home', [
-            'amounts' => Amount::query()->get(),
+            $this->amounts = Amount::all()->toArray(),
         ]);
     }
 
@@ -46,30 +48,45 @@ class Home extends Component
     #[Computed]
     public function getAmount()
     {
-        return Amount::query()
-            ->where('expense', true)
-            ->sum('amount');
+        $amounts = 0;
+
+        foreach ($this->amounts as $item) {
+            if ($item['expense'] === 1) {
+                $amounts += $item['amount'];
+            }
+        }
+
+        return $amounts;
     }
 
     #[Computed]
     public function getExpense()
     {
-        return Amount::query()
-            ->where('expense', false)
-            ->sum('amount');
+        $expenses = 0;
+
+        foreach ($this->amounts as $item) {
+            if ($item['expense'] === 0) {
+                $expenses += $item['amount'];
+            }
+        }
+
+        return $expenses;
     }
 
     #[Computed]
     public function getTotal()
     {
-        $amount = Amount::query()
-            ->where('expense', true)
-            ->sum('amount');
+        $amounts = 0;
+        $expenses = 0;
 
-        $expense = Amount::query()
-        ->where('expense', false)
-        ->sum('amount');
+        foreach ($this->amounts as $item) {
+            if ($item['expense'] === 1) {
+                $amounts += $item['amount'];
+            } else {
+                $expenses += $item['amount'];
+            }
+        }
 
-        return $amount - $expense;
+        return $amounts - $expenses;
     }
 }
