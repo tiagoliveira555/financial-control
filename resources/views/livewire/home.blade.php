@@ -18,12 +18,9 @@
             </div>
             <x-button>Adicionar</x-button>
         </x-form>
-        @if (session('success'))
-            <span class="inline-block text-green-600 w-full mx-auto text-center mt-3">{{ session('success') }}</span>
-        @endif
-        @if (session('deleted'))
-            <span class="inline-block text-red-500 w-full mx-auto text-center mt-3">{{ session('deleted') }}</span>
-        @endif
+
+        <x-flash-message />
+
         <table class="mt-8 bg-white w-full rounded shadow-sm shadow-gray-300">
             <x-theader />
             <tbody>
