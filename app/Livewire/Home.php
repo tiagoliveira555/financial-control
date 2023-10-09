@@ -23,11 +23,14 @@ class Home extends Component
     public function render()
     {
         return view('livewire.home', [
-            $this->amounts = Amount::all()->toArray(),
+            $this->amounts = Amount::query()
+                        ->select(['id', 'description', 'amount', 'expense'])
+                        ->get()
+                        ->toArray(),
         ]);
     }
 
-    public function save()
+    public function save(): void
     {
         $this->validate();
 
@@ -38,7 +41,7 @@ class Home extends Component
         session()->flash('success', 'Dados inseridos com sucesso!');
     }
 
-    public function delete($id)
+    public function delete($id): void
     {
         Amount::query()->findOrFail($id)->delete();
 
@@ -46,7 +49,7 @@ class Home extends Component
     }
 
     #[Computed]
-    public function getAmount()
+    public function getAmount(): float
     {
         $amounts = 0;
 
@@ -60,7 +63,7 @@ class Home extends Component
     }
 
     #[Computed]
-    public function getExpense()
+    public function getExpense(): float
     {
         $expenses = 0;
 
@@ -74,7 +77,7 @@ class Home extends Component
     }
 
     #[Computed]
-    public function getTotal()
+    public function getTotal(): float
     {
         $amounts = 0;
         $expenses = 0;
